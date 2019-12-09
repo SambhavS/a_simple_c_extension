@@ -1,14 +1,15 @@
-// How C Extensions Work:
-// PyInit_ModName passes mod_struct which references method_list which has a tuple for each function (which includes a pointer to the function itself)
-// Here we have the 'SimpleMath' module which has two functions: addition & subtraction
+/* 
+ PyInit_ModName passes mod_struct which references method_list which has a tuple for each function 
+ (which includes a pointer to the function itself)
+
+ Here we have the 'SimpleMath' module which has two functions: addition & subtraction 
+ */
 
 #include <Python.h>
 
 static PyObject *addition(PyObject *self, PyObject *args) {
     int num1 = 0;
     int num2 = 0;
-    int bytes_copied = -1;
-
     if(!PyArg_ParseTuple(args, "ii", &num1, &num2)) {
         return NULL;
     }
@@ -19,8 +20,6 @@ static PyObject *addition(PyObject *self, PyObject *args) {
 static PyObject *subtraction(PyObject *self, PyObject *args) {
     int num1 = 0;
     int num2 = 0;
-    int bytes_copied = -1;
-
     if(!PyArg_ParseTuple(args, "ii", &num1, &num2)) {
         return NULL;
     }
